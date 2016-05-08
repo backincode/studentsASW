@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "db" do |db|
     db.vm.box = "hashicorp/precise64"
     db.vm.provision :shell, inline: "echo =========== DB ============="
-	db.vm.provision :shell, inline: "sudo apt-get update"
+    db.vm.provision :shell, inline: "sudo apt-get update"
     db.vm.provision :shell, inline: "sudo apt-get -yf install postgresql"
   end
 end
