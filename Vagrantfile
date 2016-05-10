@@ -3,6 +3,7 @@ Vagrant.configure("2") do |config|
   client.vm.box = "hashicorp/precise64"
   client.vm.provision :shell, inline: "echo ============ CLIENT ==============="
   client.vm.network "forwarded_port", guest: 8080, host: 8080
+  client.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
   client.vm.provision :shell, inline: "sudo apt-get update"
   client.vm.provision :shell, inline: "sudo apt-get -yf install openjdk-7-jdk"
   client.vm.provision :shell, inline: "sudo apt-get -yf install gradle"
@@ -14,6 +15,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "db" do |db|
     db.vm.box = "hashicorp/precise64"
     db.vm.provision :shell, inline: "echo =========== DB ============="
+    db.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
     db.vm.provision :shell, inline: "sudo apt-get update"
     db.vm.provision :shell, inline: "sudo apt-get -yf install postgresql"
   end
