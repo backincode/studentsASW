@@ -54,7 +54,6 @@ public class Controller extends HttpServlet {
 				azione = (Azione)Class.forName(nomeAzione).newInstance();
 				String esitoAzione = azione.esegui(request);
 				prossimaPagina = this.esito2pagina.get(esitoAzione);
-				System.out.println(prossimaPagina);
 			} catch (InstantiationException e) {
 				prossimaPagina = "/errore.jsp";
 			} catch (IllegalAccessException e) {

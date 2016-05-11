@@ -15,8 +15,11 @@
 	<% 
 		if(request.getSession().getAttribute("tipoEsito")!=null)
 		{
-			out.print("<table align='center'><tr><th>ID</th><th>Nome</th><th>Descrizione</th><th>CFU</th></tr>");
-			out.print(request.getSession().getAttribute("tipoEsito"));
+			if(request.getSession().getAttribute("tipoEsito").toString().length()>2)
+			 {out.print("<table align='center'><tr><th>ID</th><th>Nome</th><th>Descrizione</th><th>CFU</th></tr>");
+			out.print(request.getSession().getAttribute("tipoEsito"));}
+			else
+				out.print("Nessun Piano di Studi trovato");
 			request.getSession().removeAttribute("tipoEsito");
 		}
 		else
