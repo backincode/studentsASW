@@ -1,0 +1,7 @@
+CREATE TABLE studente ( matricola bigint NOT NULL, nome text, cognome text, CONSTRAINT studente_key PRIMARY KEY (matricola) ) WITH ( OIDS=FALSE ); ALTER TABLE studente OWNER TO postgres;
+
+CREATE SEQUENCE sequenza_id INCREMENT 1 MINVALUE 0 MAXVALUE 9999999 START 1 CACHE 1; ALTER TABLE sequenza_id OWNER TO postgres;
+
+CREATE TABLE esame ( id bigint NOT NULL, nome text, descrizione text, cfu bigint, CONSTRAINT esame_key PRIMARY KEY (id) ) WITH ( OIDS=FALSE ); ALTER TABLE esame OWNER TO postgres;
+
+CREATE TABLE pianodistudi ( id_esame bigint NOT NULL, id_studente bigint NOT NULL, CONSTRAINT key_pds PRIMARY KEY (id_esame, id_studente), CONSTRAINT fkey_esame FOREIGN KEY (id_esame) REFERENCES esame (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION, CONSTRAINT fkey_studente FOREIGN KEY (id_studente) REFERENCES studente (matricola) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION ) WITH ( OIDS=FALSE ); ALTER TABLE pianodistudi OWNER TO postgres;

@@ -1,0 +1,5 @@
+1. creare database
+nel db "psql"
+CREATE TABLE portale"
+righe nel file struttura_db.
+?password postgres

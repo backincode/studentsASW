@@ -1,6 +1,0 @@
-1.aggiungere a vagrantfile `config.vm.network "forwarded_port", guest: 8080, host: 8080` e `config.vm.provision "shell", path: "installTomcat.sh"`
-2.script per tomcat o installa manualmente.
-3. sudo nano /etc/tomcat7/tomcat-users.xml aggiungi `<role rolename="manager-gui"/>
-	<user username="admin" password="admin" roles="manager-gui"/>` 
-
-client-server (openjdk) gradle
