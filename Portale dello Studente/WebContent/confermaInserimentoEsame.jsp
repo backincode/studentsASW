@@ -11,7 +11,7 @@
 	<%@ include file="header.html" %>
 	<div id="container">
 	<form method="post" action="confermaInserimentoEsame.do">
-	<div class="campo"><%= "Nome: " +request.getSession().getAttribute("nomeSessione") %></div>
+	<div class="campo"><%= "Nome: " +request.getSession().getAttribute("nomeEsameSessione") %></div>
 	<div class="campo"><%= "Descrizione: " +request.getSession().getAttribute("descrizioneSessione") %></div>
 	<div class="campo"><%= "CFU: " +request.getSession().getAttribute("cfuSessione") %></div>
 	<input class="blueButton" type="submit" name="risposta" value="si" />

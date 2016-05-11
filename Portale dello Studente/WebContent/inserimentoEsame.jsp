@@ -17,23 +17,22 @@
 	<div class="box">
 		<label>
 		<span>Nome</span>
-		<input class="input_text"type="text" name="nome" value="<%= (request.getSession().getAttribute("nomeSessione") != null) ? request.getSession().getAttribute("nomeSessione") : ""  %>" />
-		<% if(request.getAttribute("msgerroreNome") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreNome")+"</span>"); %>
+		<input class="input_text"type="text" name="nome" value="<%= (request.getSession().getAttribute("nomeEsameSessione") != null) ? request.getSession().getAttribute("nomeEsameSessione") : ""  %>" />
+		<% if(request.getAttribute("msgerroreNome") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreNome")+"</p>"); %>
 		</label>
 		<label>
 		<span>Descrizione</span>
 		<input class="input_text"type="text" name="descrizione" value="<%= (request.getSession().getAttribute("descrizioneSessione") != null) ? request.getSession().getAttribute("descrizioneSessione") : ""  %>" />
-		<% if(request.getAttribute("msgerroreDescrizione") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreDescrizione")+"</span>"); %>
+		<% if(request.getAttribute("msgerroreDescrizione") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreDescrizione")+"</p>"); %>
 		</label>
 		<label>
 		<span>CFU</span>
 		<input class="input_text"type="text" name="cfu" value="<%= (request.getSession().getAttribute("cfuSessione") != null) ? request.getSession().getAttribute("cfuSessione") : ""  %>" />
-		<% if(request.getAttribute("msgerroreCfu") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreCfu")+"</span>"); %>
+		<% if(request.getAttribute("msgerroreCfu") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreCfu")+"</p>"); %>
 		</label>
 		<p><input class="button"type="submit" value="Invia" /></p>
 	</div>	
 	</form>
 	</div>
-<%@ include file="header.html" %>	
 </body>
 </html>

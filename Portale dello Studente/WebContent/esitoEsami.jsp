@@ -14,7 +14,8 @@
 	<% 
 		if(request.getSession().getAttribute("tipoEsito")!=null)
 		{
-			out.print("<table align='center'><tr><th>Nome</th><th>Descrizione</th><th>CFU</th></tr>");
+			if(request.getSession().getAttribute("tipoEsito")!="Nessun esame trovato")
+				out.print("<table align='center'><tr><th>Nome</th><th>Descrizione</th><th>CFU</th></tr>");
 			out.print(request.getSession().getAttribute("tipoEsito"));
 			request.getSession().removeAttribute("tipoEsito");
 		}

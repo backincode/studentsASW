@@ -14,6 +14,7 @@
 	<% 
 		if(request.getSession().getAttribute("tipoEsito")!=null)
 		{
+			if(request.getSession().getAttribute("tipoEsito")!="Nessuno studente trovato")
 			out.print("<table align='center'><tr><th>Matricola</th><th>Nome</th><th>Cognome</th></tr>");
 			out.print(request.getSession().getAttribute("tipoEsito"));
 			request.getSession().removeAttribute("tipoEsito");

@@ -15,7 +15,7 @@ public class AzioneConfermaInserimentoEsame extends Azione {
 		HttpSession sessione = request.getSession();
 
 		if(risp.equals("si"))	{
-			if(sistema.inserisciEsame((String)sessione.getAttribute("nomeSessione"), (String)sessione.getAttribute("descrizioneSessione"), Integer.valueOf((String)sessione.getAttribute("cfuSessione"))))	{
+			if(sistema.inserisciEsame((String)sessione.getAttribute("nomeEsameSessione"), (String)sessione.getAttribute("descrizioneSessione"), Integer.valueOf((String)sessione.getAttribute("cfuSessione"))))	{
 				sessione.setAttribute("tipoEsito", "Inserimento effettuato correttamente.");
 				return "esito";
 			}

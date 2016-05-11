@@ -18,17 +18,17 @@
 		<label>
 		<span>Nome</span>
 		<input class="input_text"type="text" name="nome" value="<%= (request.getSession().getAttribute("nomeSessione") != null) ? request.getSession().getAttribute("nomeSessione") : ""  %>" />
-		<% if(request.getAttribute("msgerroreNome") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreNome")+"</span>"); %>
+		<% if(request.getAttribute("msgerroreNome") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreNome")+"</p>"); %>
 		</label>
 		<label>
 		<span>Cognome</span>
 		<input class="input_text"type="text" name="cognome" value="<%= (request.getSession().getAttribute("cognomeSessione") != null) ? request.getSession().getAttribute("cognomeSessione") : ""  %>" />
-		<% if(request.getAttribute("msgerroreCognome") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreCognome")+"</span>"); %>
+		<% if(request.getAttribute("msgerroreCognome") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreCognome")+"</p>"); %>
 		</label>
 		<label>
 		<span>Matricola</span>
 		<input class="input_text"type="text" name="matricola" value="<%= (request.getSession().getAttribute("matricolaSessione") != null) ? request.getSession().getAttribute("matricolaSessione") : ""  %>" />
-		<% if(request.getAttribute("msgerroreMatricola") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreMatricola")+"</span>"); %>
+		<% if(request.getAttribute("msgerroreMatricola") != null) out.print("<p class='pError'>"+request.getAttribute("msgerroreMatricola")+"</p>"); %>
 		</label>
 		<p><input class="button"type="submit" value="Invia" /></p>
 	</div>	
