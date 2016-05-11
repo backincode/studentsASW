@@ -20,6 +20,6 @@ Vagrant.configure("2") do |config|
     db.vm.provision :shell, inline: "echo =========== DB ============="
     db.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
     db.vm.provision :shell, inline: "sudo apt-get update"
-    db.vm.provision :shell, inline: "sudo apt-get -yf install postgresql"
+    db.vm.provision :shell, inline: "sudo apt-get -yf install postgresql-9.1"
  end
 end
