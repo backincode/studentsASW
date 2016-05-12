@@ -13,8 +13,11 @@ Vagrant.configure("2") do |config|
     appserver.vm.provision :shell, inline: "wget http://it.apache.contactlab.it/tomcat/tomcat-7/v7.0.69/bin/apache-tomcat-7.0.69.tar.gz"
     appserver.vm.provision :shell, inline: "tar -zxvf /home/vagrant/apache-tomcat-7.0.69.tar.gz"
     appserver.vm.provision :shell, inline: "rm -rf /home/vagrant/apache-tomcat-7.0.69.tar.gz"
-    appserver.vm.provision :shell, inline: "cp /vagrant/project.war /home/vagrant/apache-tomcat-7.0.69/webapps/"
-    appserver.vm.provision :shell, inline: "sh /home/vagrant/apache-tomcat-7.0.69/bin/startup.sh start"
+
+    appserver.vm.provision :shell, inline: "cp -r /vagrant/Portale\ dello\ Studente/ /home/vagrant/"
+    appserver.vm.provision :shell, inline: "gradle -p Portale\ dello\ Studente/ war"
+    appserver.vm.provision :shell, inline: "cp Portale\ dello\ Studente/build/libs/portale-dello-studente.war /home/vagrant/apache-tomcat-7.0.69/webapps/"
+    appserver.vm.provision :shell, inline: "sudo sh /home/vagrant/apache-tomcat-7.0.69/bin/startup.sh start"
   end
 
   config.vm.define "dbserver" do |db|
