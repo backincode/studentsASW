@@ -16,20 +16,19 @@ sourceCompatibility = 1.7
 
 war.baseName = 'portale-dello-studente'
 
-project.webAppDirName = 'WebContent'
-
-
 repositories {
 	mavenCentral()
 	jcenter()
 }
 
-// dependencies to run on tomcat, are mandatory for tomcat plugin
 dependencies {
 	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
 	//compile 'postgresql:postgresql:9.1-901.jdbc3'
 	compile 'com.mchange:c3p0:0.9.5.2'
 
+
+	// dependencies to run on tomcat, are mandatory for tomcat plugin
+    // used to provide local running in embedded mode
     def tomcatVersion = '7.0.69'
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
            "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
