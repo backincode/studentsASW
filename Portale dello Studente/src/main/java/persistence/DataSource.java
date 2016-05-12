@@ -12,14 +12,14 @@ public class DataSource {
 	 * senza argomenti apre una connessione con il database di default 'portale'
 	 */
 	public DataSource() {
-		 dbURI = "jdbc:postgresql://localhost:5432/portale";
+		 dbURI = "jdbc:postgresql://10.11.1.201:5432/portale";
 	}
 	/**
 	 * 
 	 * @param nomeDB nome del database con cui aprire la connessione, SENZA specificare il percorso completo
 	 */
 	public DataSource(String nomeDB) {
-		dbURI = "jdbc:postgresql://localhost:5432/" + nomeDB;
+		dbURI = "jdbc:postgresql://10.11.1.201:5432/" + nomeDB;
 	}
 	
 	public Connection getConnection() throws PersistenceException {
@@ -39,7 +39,7 @@ public class DataSource {
 	 * @param nomeDB il nome da assegnare al database SENZA il percorso completo
 	 */
 	public void setDbURI (String nomeDB) {
-		dbURI = "jdbc:postgresql://localhost:5432/" + nomeDB;
+		dbURI = "jdbc:postgresql://10.11.1.201:5432/" + nomeDB;
 	}
 	
 	/**
