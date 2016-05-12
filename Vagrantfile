@@ -1,3 +1,10 @@
+# launch it for the first time with the following command:
+# WINDOWS
+# vagrant plugin install vagrant-trigger & vagrant up
+# *nix
+# vagrant plugin install vagrant-trigger ; vagrant up
+
+
 Vagrant.configure("2") do |config|
   config.vm.define "db" do |db|
     db.vm.box = "hashicorp/precise64"
