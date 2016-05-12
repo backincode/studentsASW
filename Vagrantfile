@@ -1,6 +1,8 @@
+os_box = "ubuntu/wily64"  #xenial64 does not work with vagrant at this moment [may 2016] 
+
 Vagrant.configure("2") do |config|
   config.vm.define "appserver" do |appserver|
-    appserver.vm.box = "ubuntu/wily64"
+    appserver.vm.box = os_box
     appserver.vm.hostname = "appserver"
     appserver.vm.post_up_message  = "============ APPSERVER ==============="
     
@@ -16,7 +18,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "dbserver" do |db|
-    db.vm.box = "ubuntu/wily64"
+    db.vm.box = os_box
     db.vm.hostname = "dbserver"
     db.vm.post_up_message = "=========== DBSERVER ============="
     db.vm.network "private_network", ip: "10.11.1.201", virtualbox__intnet: true
