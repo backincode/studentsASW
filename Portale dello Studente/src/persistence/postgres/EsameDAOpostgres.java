@@ -171,9 +171,10 @@ public class EsameDAOpostgres implements EsameRepository {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT id, nome, descrizione, cfu FROM esame WHERE nome = ?";
+			String query = "SELECT id, nome, descrizione, cfu FROM esame WHERE nome LIKE ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, nome);
+			String nomelike = new String("%"+nome+"%");
+			statement.setString(1, nomelike);
 			result = statement.executeQuery();
 
 			esami = new LinkedList<Esame>();
@@ -181,7 +182,7 @@ public class EsameDAOpostgres implements EsameRepository {
 			while (result.next()) {
 				esame = new Esame();
 				esame.setId(result.getLong("id"));
-				esame.setNome(nome);
+				esame.setNome(result.getString("nome"));
 				esame.setDescrizione(result.getString("descrizione"));
 				esame.setCfu(result.getInt("cfu"));
 

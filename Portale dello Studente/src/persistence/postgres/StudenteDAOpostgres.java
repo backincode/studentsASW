@@ -138,16 +138,17 @@ public class StudenteDAOpostgres implements StudenteRepository {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT cognome, matricola FROM studente WHERE nome = ?";
+			String query = "SELECT cognome, matricola, nome FROM studente WHERE nome LIKE ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, nome);
+			String nomelike = new String("%"+nome+"%");
+			statement.setString(1, nomelike);
 			result = statement.executeQuery();
 
 			studenti = new LinkedList<Studente>();
 
 			while (result.next()) {
 				studente = new StudenteProxy(); // proxy per Laxy Load
-				studente.setNome(nome);
+				studente.setNome(result.getString("nome"));
 				studente.setCognome(result.getString("cognome"));
 				studente.setMatricola(result.getInt("matricola"));
 
@@ -181,16 +182,17 @@ public class StudenteDAOpostgres implements StudenteRepository {
 
 		try {
 			connection = dataSource.getConnection();
-			String query = "SELECT nome, matricola FROM studente WHERE cognome = ?";
+			String query = "SELECT nome, matricola, cognome FROM studente WHERE cognome LIKE ?";
 			statement = connection.prepareStatement(query);
-			statement.setString(1, cognome);
+			String cognomelike = new String("%"+cognome+"%");
+			statement.setString(1, cognomelike);
 			result = statement.executeQuery();
 
 			studenti = new LinkedList<Studente>();
 
 			while (result.next()) {
 				studente = new StudenteProxy(); // proxy per Laxy Load
-				studente.setCognome(cognome);
+				studente.setCognome(result.getString("cognome"));
 				studente.setNome(result.getString("nome"));
 				studente.setMatricola(result.getInt("matricola"));
 

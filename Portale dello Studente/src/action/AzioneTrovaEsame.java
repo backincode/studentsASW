@@ -19,6 +19,7 @@ public class AzioneTrovaEsame extends Azione{
 		List<Esame> esami = new LinkedList<Esame>();
 		String esito = new String();
 		Facade sistema = new FacadeImp();
+		
 		esami.addAll(sistema.trovaEsamePerNome(((String)request.getParameter("esame"))));
 
 

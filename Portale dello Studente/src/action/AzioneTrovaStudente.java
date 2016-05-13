@@ -22,14 +22,20 @@ public class AzioneTrovaStudente extends Azione {
 			String esito = new String();
 			Facade sistema = new FacadeImp();
 			
-			studenti.add(sistema.trovaStudentePerMatricola(matricola));
-			studenti.addAll(sistema.trovaStudentePerNome(((String)request.getParameter("studente"))));
-			studenti.addAll(sistema.trovaStudentePerCognome(((String)request.getParameter("studente"))));
+			Studente s = sistema.trovaStudentePerMatricola(matricola);
+			if(s!=null)
+				studenti.add(s);
+			List<Studente> ls = sistema.trovaStudentePerNome(((String)request.getParameter("studente")));
+			if(!ls.isEmpty())
+				studenti.addAll(ls);
+			ls = sistema.trovaStudentePerCognome(((String)request.getParameter("studente")));
+			if(!ls.isEmpty())
+				studenti.addAll(ls);
 			
 			
 			if(!studenti.isEmpty()) {
-				for(Studente s : studenti)
-					esito += s.toString()+"\n";
+				for(Studente i : studenti)
+					esito += i.toString()+"\n";
 			}
 			else
 				esito = "Nessuno studente trovato";
