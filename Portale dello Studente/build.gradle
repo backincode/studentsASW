@@ -23,7 +23,10 @@ repositories {
 
 dependencies {
 	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
-	//compile 'postgresql:postgresql:9.1-901.jdbc3'
+//	compile 'postgresql:postgresql:9.1-901.jdbc3'
+//	compile 'org.postgresql:postgresql:9.4-1206-jdbc42'
+	compile 'org.postgresql:postgresql:9.4.1208.jre7'
+
 	compile 'com.mchange:c3p0:0.9.5.2'
 
 
