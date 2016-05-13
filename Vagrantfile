@@ -1,8 +1,8 @@
 # launch it for the first time with the following command:
 # WINDOWS
-# vagrant plugin install vagrant-trigger & vagrant up
+# vagrant plugin install vagrant-triggers & vagrant up
 # *nix
-# vagrant plugin install vagrant-trigger ; vagrant up
+# vagrant plugin install vagrant-triggers ; vagrant up
 
 os_box = "ubuntu/wily64"  #xenial64 does not work with vagrant at this moment [may 2016] 
 

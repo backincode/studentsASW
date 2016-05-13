@@ -13,7 +13,15 @@ Database di studenti, esami e piani di studio.
 
 ## Tecnologie usate
 
-* Vagrant
+* Vagrant (con plugin vagrant-triggers)
 * Gradle
 * Apache Tomcat
 * Postgresql
+
+## Utilizzo
+
+Per ambienti Windows, utilizzare il seguente comando:
+> vagrant plugin install vagrant-triggers & vagrant up
+
+Per ambienti *nix, utilizzare il seguente comando:
+> vagrant plugin install vagrant-triggers ; vagrant up
