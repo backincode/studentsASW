@@ -9,19 +9,28 @@
 
 ## Dominio di interesse
 
-Database di studenti, esami e piani di studio.
+L'applicazione permette di gestire un piccolo portale degli studenti universitari: visualizzazione ed inserimento di studenti, esami e gestione dei piani di studio.
 
 ## Tecnologie usate
+* Ubuntu 15.10 (Wily Werewolf)
+* Vagrant 1.8.1
 
-* Vagrant (con plugin vagrant-triggers)
-* Gradle
-* Apache Tomcat
-* Postgresql
+### Macchina webserver
+* Gradle 2.5
+* Apache Tomcat 7.0.64
+
+### Macchina database
+* Postgresql 9.4.7
 
 ## Utilizzo
 
-Per ambienti Windows, utilizzare il seguente comando:
-> vagrant plugin install vagrant-triggers & vagrant up
+Lanciare il comando
 
-Per ambienti *nix, utilizzare il seguente comando:
-> vagrant plugin install vagrant-triggers ; vagrant up
+```bash
+vagrant up
+```
+
+Successivamente, visitare il sito:
+```
+http://localhost:8080/portale
+```

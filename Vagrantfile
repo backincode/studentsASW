@@ -1,9 +1,3 @@
-# launch it for the first time with the following command:
-# WINDOWS
-# vagrant plugin install vagrant-triggers & vagrant up
-# *nix
-# vagrant plugin install vagrant-triggers ; vagrant up
-
 os_box = "ubuntu/wily64"  #xenial64 does not work with vagrant at this moment [may 2016] 
 
 Vagrant.configure("2") do |config|
@@ -22,7 +16,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "appserver" do |appserver|
     appserver.vm.box = os_box
     appserver.vm.hostname = "appserver"
-    appserver.vm.post_up_message  = "============ APPSERVER ==============="
+    appserver.vm.post_up_message  = "============ APPSERVER ===============\nopen http://localhost:8080/portale to test the project"
     
     appserver.vm.network "forwarded_port", guest: 8080, host: 8080
     appserver.vm.network "private_network", ip: "10.11.1.101", virtualbox__intnet: true
@@ -34,14 +28,5 @@ Vagrant.configure("2") do |config|
     appserver.vm.provision :shell, inline: "mv -f portale/build/libs/portale.war /var/lib/tomcat7/webapps/"
     appserver.vm.provision :shell, inline: "rm -r /home/vagrant/portale/"
  end
- config.trigger.after :up, :vm => ["appserver"] do
-  link = "http://localhost:8080/portale"
-   if RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/
-     system "start #{link}"
-   elsif RbConfig::CONFIG['host_os'] =~ /darwin/
-     system "open #{link}"
-   elsif RbConfig::CONFIG['host_os'] =~ /linux|bsd/
-     system "xdg-open #{link}"
-  end
- end
+
 end
