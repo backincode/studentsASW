@@ -15,11 +15,11 @@ L'applicazione permette di gestire un piccolo portale degli studenti universitar
 * Ubuntu 15.10 (Wily Werewolf)
 * Vagrant 1.8.1
 
-### Macchina webserver
+##### Macchina webserver
 * Gradle 2.5
 * Apache Tomcat 7.0.64
 
-### Macchina database
+##### Macchina database
 * Postgresql 9.4.7
 
 ## Utilizzo
