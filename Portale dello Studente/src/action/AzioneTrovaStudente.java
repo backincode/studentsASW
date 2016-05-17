@@ -1,7 +1,8 @@
 package action;
 
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,7 +19,7 @@ public class AzioneTrovaStudente extends Azione {
 			HttpSession sessione = request.getSession();
 			
 			int matricola = Integer.valueOf(((String)request.getParameter("studente")));
-			List<Studente> studenti = new LinkedList<Studente>();
+			Set<Studente> studenti = new HashSet<Studente>();
 			String esito = new String();
 			Facade sistema = new FacadeImp();
 			
@@ -43,7 +44,7 @@ public class AzioneTrovaStudente extends Azione {
 			return "esitoStudenti";
 		} catch (NumberFormatException e){
 			HttpSession sessione = request.getSession();
-			List<Studente> studenti = new LinkedList<Studente>();
+			Set<Studente> studenti = new HashSet<Studente>();
 			String esito = new String();
 			Facade sistema = new FacadeImp();
 			studenti.addAll(sistema.trovaStudentePerNome(((String)request.getParameter("studente"))));
