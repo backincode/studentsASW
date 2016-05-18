@@ -1,7 +1,7 @@
 package action;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +16,7 @@ public class AzioneTrovaEsame extends Azione{
 	public String esegui(HttpServletRequest request) {
 		HttpSession sessione = request.getSession();
 
-		List<Esame> esami = new LinkedList<Esame>();
+		Set<Esame> esami = new HashSet<Esame>();
 		String esito = new String();
 		Facade sistema = new FacadeImp();
 		
