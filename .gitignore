@@ -19,3 +19,4 @@ hs_err_pid*
 portale/gradle/
 portale/gradlew
 portale/gradlew.bat
+portale/build/
