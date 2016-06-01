@@ -27,6 +27,10 @@ dependencies {
 
 	compile 'com.mchange:c3p0:0.9.5.2'
 
+	// http://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet
+	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.23'
+
+
 
 	// dependencies to run on tomcat, are mandatory for tomcat plugin
     // used to provide local running in embedded mode
