@@ -3,7 +3,7 @@
 
 
 gradle -p portale/ war
-mv portale/build/libs/portale.war utils/portale.war
+mv portale/build/libs/portale.war portale.war
 
 ################## BUILD DOCKER DATABASE PORTALE ################
 
