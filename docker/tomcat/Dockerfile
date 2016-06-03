@@ -1,0 +1,9 @@
+# StudentsASW container
+
+FROM tomcat:8.0
+
+# add .war file
+COPY utils/portale.war /usr/local/tomcat/webapps/
+
+# Port forwarding
+EXPOSE 8080
