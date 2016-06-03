@@ -12,8 +12,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B97B0AFCAA1A47F044F
 EXPOSE 5432
 
 # Add files for database setup
-ADD utils/setup_portale.sql /temp/setup_portale.sql
-ADD utils/data.sql /temp/data.sql
+ADD database/setup_portale.sql /temp/setup_portale.sql
+ADD database/data.sql /temp/data.sql
 
 # Setup database
 USER postgres
