@@ -16,3 +16,6 @@ hs_err_pid*
 .gradle
 .idea
 .vagrant
+portale/gradle/
+portale/gradlew
+portale/gradlew.bat
