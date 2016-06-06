@@ -44,7 +44,7 @@ public class Esami {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Map<String, String> getDescr(@PathParam("{id}") long id){
+    public Map<String, String> getDescr(@PathParam("id") long id){
         HashMap<String, String> res = new HashMap<>();
 
         Facade system = new FacadeImp();
