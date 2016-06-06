@@ -19,18 +19,40 @@ public class AzioneTrovaEsame extends Azione{
 		Set<Esame> esami = new HashSet<Esame>();
 		String esito = new String();
 		Facade sistema = new FacadeImp();
-		
-		esami.addAll(sistema.trovaEsamePerNome(((String)request.getParameter("esame"))));
+
+		try {
+			Esame tmp = sistema.trovaEsame(Long.valueOf(request.getParameter("esame")));
+			if(tmp!=null)
+				esami.add(tmp);
+			esami.addAll(sistema.trovaEsamePerNome(((String)request.getParameter("esame"))));
 
 
-		if(!esami.isEmpty()) {
-			for(Esame s : esami)
-				esito += s.toString()+"\n";
+
+			if(!esami.isEmpty()) {
+				for(Esame s : esami)
+					esito += s.toString()+"\n";
+			}
+			else
+				esito = "Nessun esame trovato";
+			sessione.setAttribute("tipoEsito", esito);
+			return "esitoEsami";
+		} catch(NumberFormatException e) {
+			esami.addAll(sistema.trovaEsamePerNome(((String)request.getParameter("esame"))));
+
+
+
+			if(!esami.isEmpty()) {
+				for(Esame s : esami)
+					esito += s.toString()+"\n";
+			}
+			else
+				esito = "Nessun esame trovato";
+			sessione.setAttribute("tipoEsito", esito);
+			return "esitoEsami";
 		}
-		else
-			esito = "Nessun esame trovato";
-		sessione.setAttribute("tipoEsito", esito);
-		return "esitoEsami";
+
+
+		
 	}
 
 }
