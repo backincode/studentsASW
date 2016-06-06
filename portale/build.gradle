@@ -29,7 +29,7 @@ dependencies {
 
 	// http://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet
 	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.23'
-
+	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.23'
 
 
 	// dependencies to run on tomcat, are mandatory for tomcat plugin

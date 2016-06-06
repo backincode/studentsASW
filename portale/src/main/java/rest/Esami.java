@@ -8,7 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class Esami {
 
     @GET
-    @Produces("text/plain")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Map<String, String>> getAll(){
 
         ArrayList<Map<String, String>> res = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Esami {
 
     @GET
     @Path("{id}")
-    @Produces("text/plain")
+    @Produces(MediaType.APPLICATION_JSON)
     public Map<String, String> getDescr(@PathParam("{id}") long id){
         HashMap<String, String> res = new HashMap<>();
 
