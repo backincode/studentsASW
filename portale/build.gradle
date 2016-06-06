@@ -1,0 +1,45 @@
+buildscript{
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+	dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.2.4'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'com.bmuschko.tomcat'
+
+sourceCompatibility = 1.7
+
+war.baseName = 'portale'
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+	compile 'org.postgresql:postgresql:9.4.1208.jre7'
+
+	compile 'com.mchange:c3p0:0.9.5.2'
+
+	// http://mvnrepository.com/artifact/org.glassfish.jersey.containers/jersey-container-servlet
+	compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-servlet', version: '2.23'
+	compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.23'
+
+
+	// dependencies to run on tomcat, are mandatory for tomcat plugin
+    // used to provide local running in embedded mode
+    def tomcatVersion = '7.0.69'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+// context where tomcat is deployed, by defautl localhost:8080/
+tomcatRun.contextPath = '/'
+tomcatRunWar.contextPath = '/'

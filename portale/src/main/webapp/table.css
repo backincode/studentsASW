@@ -1,0 +1,39 @@
+table.altrowstable, .ordini, .righeOrdine {
+	margin: 5px auto;
+	width: 70%;
+	font-family: verdana,arial,sans-serif;
+	font-size: 20px;
+	color: #000000;
+	border-width: 1px;
+	border-color: #FFFFFF;
+	border-collapse: collapse;
+}
+
+table.ordini th, .righeOrdine th
+{
+	background-color: #3399FF;
+}
+
+table.righeOrdine td
+{
+	background-color: #66CCFF;
+}
+
+table.altrowstable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #FFFFFF;
+}
+table.altrowstable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #FFFFFF;
+}
+.oddrowcolor{
+	background-color:#33CCFF;
+}
+.evenrowcolor{
+	background-color:#66CCFF;
+}
