@@ -17,8 +17,8 @@ public class FacadeImp implements Facade {
 		try {
 			StudenteDAOpostgres dao = new StudenteDAOpostgres();
 			Studente studente = new Studente();
-			studente.setNome(nome);
-			studente.setCognome(cognome);
+			studente.setNome(nome.toLowerCase());
+			studente.setCognome(cognome.toLowerCase());
 			studente.setMatricola(matricola);
 			return dao.insert(studente);
 		} catch (PersistenceException e) {
@@ -54,7 +54,7 @@ public class FacadeImp implements Facade {
 	public List<Studente> trovaStudentePerNome(String nome) {
 		try {
 			StudenteDAOpostgres dao = new StudenteDAOpostgres();
-			return dao.findByNome(nome);
+			return dao.findByNome(nome.toLowerCase());
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			return null;
@@ -65,7 +65,7 @@ public class FacadeImp implements Facade {
 	public List<Studente> trovaStudentePerCognome(String cognome) {
 		try {
 			StudenteDAOpostgres dao = new StudenteDAOpostgres();
-			return dao.findByCognome(cognome);
+			return dao.findByCognome(cognome.toLowerCase());
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			return null;
@@ -77,8 +77,8 @@ public class FacadeImp implements Facade {
 		try {
 			EsameDAOpostgres dao = new EsameDAOpostgres();
 			Esame esame = new Esame();
-			esame.setNome(nome);
-			esame.setDescrizione(descrizione);
+			esame.setNome(nome.toLowerCase());
+			esame.setDescrizione(descrizione.toLowerCase());
 			esame.setCfu(cfu);
 			return dao.insert(esame);
 		} catch (PersistenceException e) {
@@ -102,7 +102,7 @@ public class FacadeImp implements Facade {
 	public boolean aggiornaEsame(Esame esame, String nome, String descrizione, int cfu) {
 		try {
 			EsameDAOpostgres dao = new EsameDAOpostgres();
-			return dao.update(esame, nome, descrizione, cfu);
+			return dao.update(esame, nome.toLowerCase(), descrizione.toLowerCase(), cfu);
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			return false;
@@ -136,7 +136,7 @@ public class FacadeImp implements Facade {
 	public List<Esame> trovaEsamePerNome(String nome) {
 		try {
 			EsameDAOpostgres dao = new EsameDAOpostgres();
-			return dao.findByNome(nome);
+			return dao.findByNome(nome.toLowerCase());
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 			return null;
@@ -234,11 +234,6 @@ public class FacadeImp implements Facade {
 			e.printStackTrace();
 			return false;
 		}
-	}
-
-
-	
-
-	
+	}	
 
 }
