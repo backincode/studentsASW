@@ -11,6 +11,12 @@ public class Esame {
 		super();
 	}
 
+	public Esame(String nome, String descrizione, int cfu){
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.cfu = cfu;
+	}
+
 	public String getNome() {
 		return nome;
 	}
