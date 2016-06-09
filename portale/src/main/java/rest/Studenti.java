@@ -77,6 +77,27 @@ public class Studenti {
         }
     }
 
+    @GET
+    @Path("cognome/{cognome}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Studente> getStudentiByCognome(@PathParam("cognome") String cognome){
+        try{
+            List<Studente> res;
+            Facade system = new FacadeImp();
+            List<Studente> off=system.trovaStudentePerCognome(cognome);
+            if(off==null)
+                throw new WebApplicationException(Response.Status.NOT_FOUND);         //fail fast
+            res=off;
+            return res;
+        }
+        catch (Exception ex){
+            String errorMessage = "Error while finding Studente with cognome" + cognome + ": " + ex.getMessage();
+            throw new WebApplicationException(
+                    Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                            .entity(errorMessage).type("text/plain").build());
+        }
+    }
+
     @Path("inserisciStudente/")
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
