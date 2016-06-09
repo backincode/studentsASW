@@ -28,6 +28,17 @@ public class FacadeImp implements Facade {
 	}
 
 	@Override
+	public boolean aggiornaStudente(Studente studente, String nome, String cognome){
+		try {
+			StudenteDAOpostgres dao = new StudenteDAOpostgres();
+			return dao.update(studente,nome.toLowerCase(),cognome.toLowerCase());
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
 	public boolean eliminaStudente(Studente studente) {
 		try {
 			StudenteDAOpostgres dao = new StudenteDAOpostgres();

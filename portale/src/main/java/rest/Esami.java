@@ -16,7 +16,6 @@ import java.util.List;
  */
 @Path("esami")
 public class Esami {
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Esame> getAll(){
@@ -42,7 +41,6 @@ public class Esami {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Esame getEsameById(@PathParam("id") long id){
-
         try {
             Facade system = new FacadeImp();
             Esame e = system.trovaEsame(id);
@@ -108,12 +106,12 @@ public class Esami {
                 throw new WebApplicationException(
                         Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                                 .entity(errorMessage).type("text/plain").build());
-
         }
     }
 
     @Path("cancellaEsame/{id}")
     @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
     public Response deleteEsame(@PathParam("id") Long id){
         try {
             Facade system = new FacadeImp();
@@ -126,7 +124,7 @@ public class Esami {
                 if(res)
                     return Response.ok(esame).status(Response.Status.OK).build();
                 else {
-                    String errorMessage = "Error while deleting Esame with id: " + id;
+                    String errorMessage = "Error while deleting Esame with id " + id +": is still referenced in any record in PianoDiStudi table?";
                     return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                             .entity(errorMessage).type("text/plain").build();
                 }
@@ -137,41 +135,38 @@ public class Esami {
                     Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                             .entity(errorMessage).type("text/plain").build());
         }
-
     }
 
-    @Path("aggiornaEsame/")
+    @Path("aggiornaEsame/{id}")
     @PUT
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response aggiornaEsame(@FormParam("nome") String nome, @FormParam("cfu") int cfu, @FormParam("descr") String descrizione) {
+    public Response aggiornaEsame(@PathParam("id") Long id, @FormParam("nome") String nome, @FormParam("cfu") int cfu, @FormParam("descr") String descrizione) {
         Facade system = new FacadeImp();
-
-        List<Esame> res = system.trovaEsamePerNome(nome);
-        if(res.isEmpty())
+        Esame esame = system.trovaEsame(id);
+        if(esame==null)
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         else {
             try{
-                Esame esame = res.get(0);
                 boolean result = system.aggiornaEsame(esame,nome,descrizione,cfu);
-                if (result)
-                    return Response.ok(esame).status(Response.Status.OK).build();
+                if (result) {
+                    Esame tmp = new Esame(nome, descrizione, cfu);
+                    tmp.setId(id);
+                    return Response.ok(tmp).status(Response.Status.OK).build();
+                }
                 else {
                     String errorMessage = "Error while updating Esame " + esame.toString();
                     throw new WebApplicationException(
                             Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                                     .entity(errorMessage).type("text/plain").build());
                 }
-
             }
             catch (Exception ex){
-                String errorMessage = "Error while updating Esame with name " + nome + ", CFU "+ cfu + " and description \""+ descrizione +"\" : "+ ex.getMessage();
+                String errorMessage = "Error while updating Esame with id " + id +" : "+ ex.getMessage();
                 throw new WebApplicationException(
                         Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                                 .entity(errorMessage).type("text/plain").build());
             }
         }
-
-
     }
 }

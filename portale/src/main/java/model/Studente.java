@@ -60,9 +60,9 @@ public class Studente {
 		
 		public String toString()	{
 			String s = "";
-			s += "<tr><td>" +this.matricola+ "</td>";
-			s += "<td>" +this.nome+ "</td>";
-			s += "<td>" +this.cognome+ "</td></tr>";
+			s += this.matricola+ "\t";
+			s += this.nome+ "\t";
+			s += this.cognome+ "\n";
 			return s;
 		}
 

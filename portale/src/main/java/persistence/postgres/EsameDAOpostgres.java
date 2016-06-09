@@ -69,9 +69,9 @@ public class EsameDAOpostgres implements EsameRepository {
 			String query = "UPDATE esame SET nome = ?, descrizione = ?, cfu = ? "
 					+ "where id = '" + esame.getId() + "'";
 			statement = connection.prepareStatement(query);
-			statement.setString(2, nome);
-			statement.setString(3, descrizione);
-			statement.setInt(4, cfu);
+			statement.setString(1, nome);
+			statement.setString(2, descrizione);
+			statement.setInt(3, cfu);
 			righeModificate = statement.executeUpdate();
 			return (righeModificate > 0);
 		} catch (SQLException e) {

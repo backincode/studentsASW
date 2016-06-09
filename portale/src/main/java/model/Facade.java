@@ -6,6 +6,7 @@ public interface Facade {
 	/*STUDENTE*/
 	public boolean inserisciStudente(String nome, String cognome, int matricola);
 	public boolean eliminaStudente(Studente studente);
+	public boolean aggiornaStudente(Studente studente, String nome, String cognome);
 	public Studente trovaStudentePerMatricola(int matricola);
 	public List<Studente> trovaStudentePerNome(String nome);
 	public List<Studente> trovaStudentePerCognome(String cognome);

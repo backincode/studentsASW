@@ -54,7 +54,37 @@ public class StudenteDAOpostgres implements StudenteRepository {
 			}
 		}
 	}
-	
+
+	@Override
+	public boolean update(Studente studente, String nome, String cognome) throws PersistenceException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		int righeModificate = 0;
+
+		try {
+			connection = dataSource.getConnection();
+			String query = "UPDATE studente SET nome = ?, cognome = ?"
+					+ "where matricola = '" + studente.getMatricola() + "'";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, nome);
+			statement.setString(2, cognome);
+			righeModificate = statement.executeUpdate();
+			return (righeModificate > 0);
+		} catch (SQLException e) {
+			logger.severe("Errore SQL: " + e.getMessage());
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+	}
+
 	@Override
 	public boolean delete(Studente studente) throws PersistenceException {
 		Connection connection = null;
