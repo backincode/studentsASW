@@ -64,6 +64,13 @@ http://localhost:8080/portale/api/esami/{id}
 http://localhost:8080/portale/api/esami/nome/{nome}
 ```
 
+* Inserimento di un nuovo esame
+
+```
+curl --data "nome=Name&descr=Descr&cfu=CFU" http://localhost:8080/portale/api/esami/inserisciEsame
+
+```
+
 * Aggiornamento di un esame tramite il suo ID
 
 ```
@@ -96,6 +103,12 @@ http://localhost:8080/portale/studenti/nome/{nome}
 http://localhost:8080/portale/studenti/cognome/{cognome}
 ```
 
+* Inserimento di un nuovo studente
+
+```
+curl --data "nome=Name&cognome=Surname&matricola=Matricola" http://localhost:8080/portale/api/studenti/inserisciStudente
+
+```
 
 * Aggiornamento di uno studente tramite la sua matricola
 
