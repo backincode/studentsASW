@@ -78,7 +78,7 @@ curl -X PUT --data "nome=NewName&descr=NewDescr&cfu=newCFU" http://localhost:808
 
 ```
 
-* Cancellazione di uno studente tramite la sua matricola
+* Cancellazione di uno esame tramite il suo ID
 
 ```
 curl -X DELETE http://localhost:8080/portale/api/esami/cancellaEsame/{id}
@@ -88,19 +88,19 @@ curl -X DELETE http://localhost:8080/portale/api/esami/cancellaEsame/{id}
 * Lista degli studenti
 
 ```
-http://localhost:8080/portale/studenti
+http://localhost:8080/portale/api/studenti
 ```
 
 * Ricerca degli studenti dato il nome
 
 ```
-http://localhost:8080/portale/studenti/nome/{nome}
+http://localhost:8080/portale/api/studenti/nome/{nome}
 ```
 
 * Ricerca degli studenti dato il cognome
 
 ```
-http://localhost:8080/portale/studenti/cognome/{cognome}
+http://localhost:8080/portale/api/studenti/cognome/{cognome}
 ```
 
 * Inserimento di un nuovo studente
