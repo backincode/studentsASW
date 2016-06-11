@@ -12,13 +12,15 @@
 L'applicazione permette di gestire un piccolo portale degli studenti universitari: visualizzazione ed inserimento di studenti, esami e gestione dei piani di studio.
 
 ## Tecnologie usate
-* Ubuntu 15.10 (Wily Werewolf)
+* Ubuntu 15.10 (Wily Werewolf) con Vagrant
+* Ubuntu 14.04 (Trusty Tahr) con Docker
 * Vagrant 1.8.1
 * Docker 1.10.3
 
 ##### Macchina webserver
-* Gradle 2.5
-* Apache Tomcat 7.0.64
+* Gradle 2.10
+* Apache Tomcat 7.0.64 con Vagrant
+* Apache Tomcat 8.0.35 con Docker
 
 ##### Macchina database
 * Postgresql 9.4.7
